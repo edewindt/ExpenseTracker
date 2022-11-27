@@ -17,7 +17,8 @@
 			name,
 			cost,
 			negative,
-			time: dateFormat(new Date(), 'dddd, mmmm dS, yyyy, h:MM:ss TT')
+			time: dateFormat(new Date(), 'dddd, mmmm dS, yyyy, h:MM:ss TT'),
+			clicked: false
 		};
 		expenses = [...expenses, n];
 		name = '';
@@ -60,13 +61,30 @@
 </form>
 
 <table>
-	<tr><th>Expense</th><th>Value</th><th>Time</th></tr>
+	<tr><th>Expense</th><th>Value</th><th>Time</th><th>Edit</th></tr>
 	{#each expenses as e (e.id)}
-		<tr
-			><td>{e.name}</td><td class:negative={e.negative} class:positive={!e.negative}
-				>{#if e.negative}- ${e.cost}{:else}+ ${e.cost}{/if}</td
-			><td>{e.time}</td></tr
-		>
+		{#if e.clicked}<tr
+				><td><input type="text" value={e.name} /></td><td><input type="text" value={e.cost} /></td
+				><td>{e.time}</td><td
+					><button
+						on:click={() => {
+							e.clicked = !e.clicked;
+							console.log('Working');
+						}}>save</button
+					></td
+				></tr
+			>{:else}<tr
+				><td>{e.name}</td><td class:negative={e.negative} class:positive={!e.negative}
+					>{#if e.negative}- ${e.cost}{:else}+ ${e.cost}{/if}</td
+				><td>{e.time}</td><td
+					><button
+						on:click={() => {
+							e.clicked = !e.clicked;
+							console.log('Working');
+						}}>edit</button
+					></td
+				></tr
+			>{/if}
 	{/each}
 	<tr><td>Result</td><td>${result}</td><td>Right Now</td></tr>
 </table>
