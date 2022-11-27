@@ -17,7 +17,12 @@
 	];
 
 	const NewExpense = () => {
-		let n = { name, cost, negative };
+		let n = {
+			name,
+			cost,
+			negative,
+			time: dateFormat(new Date(), 'dddd, mmmm dS, yyyy, h:MM:ss TT')
+		};
 		expenses = [...expenses, n];
 		name = '';
 		cost = 0;
@@ -40,6 +45,7 @@
 	let name;
 	let cost;
 	let negative;
+	let time;
 </script>
 
 <h2>Expense Tracker</h2>
