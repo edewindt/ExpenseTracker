@@ -1,5 +1,12 @@
 <script>
 	const now = new Date();
+	onMount(() => {
+		let x = localStorage.getItem('expenses');
+		x = JSON.parse(x);
+		if (x) {
+			expenses = x;
+		}
+	});
 
 	let expenses = [];
 
@@ -14,8 +21,11 @@
 		name = '';
 		cost = null;
 		negative = false;
+		localStorage.clear();
+		localStorage.setItem('expenses', JSON.stringify(expenses));
 	};
 	import dateFormat, { masks } from 'dateformat';
+	import { onMount } from 'svelte';
 
 	const getResult = (a) => {
 		let total = 0;
