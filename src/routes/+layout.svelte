@@ -2,4 +2,13 @@
 	import css from '$lib/app.css';
 </script>
 
-<slot />
+<main>
+	<slot />
+</main>
+
+<style>
+	main {
+		display: flex;
+		justify-content: center;
+	}
+</style>
