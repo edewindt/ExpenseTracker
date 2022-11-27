@@ -7,6 +7,12 @@
 			cost: 6.99,
 			negative: true,
 			time: dateFormat(now, 'dddd, mmmm dS, yyyy, h:MM:ss TT')
+		},
+		{
+			name: 'Pay',
+			cost: 6.99,
+			negative: false,
+			time: dateFormat(now, 'dddd, mmmm dS, yyyy, h:MM:ss TT')
 		}
 	];
 	import dateFormat, { masks } from 'dateformat';
@@ -30,7 +36,11 @@
 <table>
 	<tr><th>Expense</th><th>Value</th></tr>
 	{#each expenses as { name, cost, negative, time }}
-		<tr><td>{name}</td><td>{cost}</td><td>{time}</td></tr>
+		<tr
+			><td>{name}</td><td
+				>{#if negative}-{cost}{:else}+{cost}{/if}</td
+			><td>{time}</td></tr
+		>
 	{/each}
 	<tr><td>Result</td><td>{result}</td></tr>
 </table>
