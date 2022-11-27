@@ -1,4 +1,5 @@
 <script>
+	import { v4 as uuidv4 } from 'uuid';
 	const now = new Date();
 	onMount(() => {
 		let x = localStorage.getItem('expenses');
@@ -12,6 +13,7 @@
 
 	const NewExpense = () => {
 		let n = {
+			id: uuidv4(),
 			name,
 			cost,
 			negative,
