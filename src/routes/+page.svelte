@@ -141,4 +141,7 @@
 	tr:nth-child(even) {
 		background-color: #dddddd;
 	}
+	td input {
+		max-width: 100%;
+	}
 </style>
