@@ -25,18 +25,18 @@
 	};
 	import dateFormat, { masks } from 'dateformat';
 
-	const getResult = () => {
+	const getResult = (a) => {
 		let total = 0;
-		for (let i = 0; i < expenses.length; i++) {
-			if (expenses[i].negative === true) {
-				total = total - expenses[i].cost;
+		for (let i = 0; i < a.length; i++) {
+			if (a[i].negative === true) {
+				total = total - a[i].cost;
 			} else {
-				total = total + expenses[i].cost;
+				total = total + a[i].cost;
 			}
 		}
 		return total;
 	};
-	let result = getResult();
+	$: result = getResult(expenses);
 	let name;
 	let cost;
 	let negative;
