@@ -1,20 +1,7 @@
 <script>
 	const now = new Date();
 
-	let expenses = [
-		{
-			name: 'Food',
-			cost: 6.99,
-			negative: true,
-			time: dateFormat(now, 'dddd, mmmm dS, yyyy, h:MM:ss TT')
-		},
-		{
-			name: 'Pay',
-			cost: 6.99,
-			negative: false,
-			time: dateFormat(now, 'dddd, mmmm dS, yyyy, h:MM:ss TT')
-		}
-	];
+	let expenses = [];
 
 	const NewExpense = () => {
 		let n = {
@@ -25,7 +12,7 @@
 		};
 		expenses = [...expenses, n];
 		name = '';
-		cost = 0;
+		cost = null;
 		negative = false;
 	};
 	import dateFormat, { masks } from 'dateformat';
@@ -45,14 +32,13 @@
 	let name;
 	let cost;
 	let negative;
-	let time;
 </script>
 
 <h2>Expense Tracker</h2>
 
 <form on:submit|preventDefault={NewExpense}>
 	<label for="">Expense</label><input bind:value={name} type="text" /><label for="">Value</label
-	><input bind:value={cost} type="text" /><label for="">Positive or Negative</label><input
+	><input bind:value={cost} type="text" /><label for="">Negative</label><input
 		bind:checked={negative}
 		type="checkbox"
 		name=""
