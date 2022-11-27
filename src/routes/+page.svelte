@@ -23,7 +23,6 @@
 		expenses = [...expenses, n];
 		name = '';
 		cost = null;
-		negative = false;
 		localStorage.clear();
 		localStorage.setItem('expenses', JSON.stringify(expenses));
 	};
@@ -60,13 +59,10 @@
 <h2>Expense Tracker</h2>
 
 <form on:submit|preventDefault={NewExpense}>
-	<label for="">Expense</label><input bind:value={name} type="text" /><label for="">Value</label
-	><input bind:value={cost} type="text" /><label for="">Negative</label><input
-		bind:checked={negative}
-		type="checkbox"
-		name=""
-		id=""
-	/>
+	<label for="">Expense</label><input bind:value={name} type="text" required /><label for=""
+		>Value</label
+	><input bind:value={cost} type="number" step="0.01" required /><label for="">Negative</label
+	><input bind:checked={negative} type="checkbox" name="" id="" />
 	<button>Add</button>
 </form>
 
@@ -75,7 +71,7 @@
 	{#each expenses as e (e.id)}
 		{#if e.clicked}<tr
 				><td><input type="text" bind:value={e.name} /></td><td
-					><input type="text" bind:value={e.cost} /></td
+					><input type="number" bind:value={e.cost} /></td
 				><td>{e.time}</td><td
 					><button
 						on:click={() => {
@@ -140,8 +136,5 @@
 
 	tr:nth-child(even) {
 		background-color: #dddddd;
-	}
-	td input {
-		max-width: 100%;
 	}
 </style>
