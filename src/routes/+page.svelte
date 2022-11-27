@@ -60,11 +60,11 @@
 	{#each expenses as { name, cost, negative, time }}
 		<tr
 			><td>{name}</td><td class:negative class:positive={!negative}
-				>{#if negative}- {cost}{:else}+ {cost}{/if}</td
+				>{#if negative}- ${cost}{:else}+ ${cost}{/if}</td
 			><td>{time}</td></tr
 		>
 	{/each}
-	<tr><td>Result</td><td>{result}</td><td>Right Now</td></tr>
+	<tr><td>Result</td><td>${result}</td><td>Right Now</td></tr>
 </table>
 
 <style>
