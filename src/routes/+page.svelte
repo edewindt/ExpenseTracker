@@ -29,12 +29,24 @@
 		return total;
 	};
 	let result = getResult();
+	let name;
+	let val;
+	let negative;
 </script>
 
 <h2>Expense Tracker</h2>
 
+<form action="">
+	<label for="">Expense</label><input bind:value={name} type="text" /><label for="">Value</label
+	><input bind:value={val} type="text" /><label for="">Positive or Negative</label><input
+		type="checkbox"
+		name=""
+		id=""
+	/>
+</form>
+
 <table>
-	<tr><th>Expense</th><th>Value</th></tr>
+	<tr><th>Expense</th><th>Value</th><th>Time</th></tr>
 	{#each expenses as { name, cost, negative, time }}
 		<tr
 			><td>{name}</td><td class:negative class:positive={!negative}
@@ -42,7 +54,7 @@
 			><td>{time}</td></tr
 		>
 	{/each}
-	<tr><td>Result</td><td>{result}</td></tr>
+	<tr><td>Result</td><td>{result}</td><td>Right Now</td></tr>
 </table>
 
 <style>
