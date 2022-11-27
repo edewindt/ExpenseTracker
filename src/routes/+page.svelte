@@ -34,6 +34,10 @@
 		localStorage.clear;
 		localStorage.setItem('expenses', JSON.stringify(expenses));
 	};
+	const del = (id) => {
+		const res = expenses.filter((o) => o.id != id);
+		expenses = res;
+	};
 
 	const getResult = (a) => {
 		let total = 0;
@@ -87,6 +91,11 @@
 						on:click={() => {
 							e.clicked = !e.clicked;
 						}}>edit</button
+					>
+					<button
+						on:click={() => {
+							del(e.id);
+						}}>delete</button
 					></td
 				></tr
 			>{/if}
