@@ -98,9 +98,17 @@
 <style>
 	.negative {
 		color: red;
+		background-color: #ffefef;
 	}
 	.positive {
 		color: green;
+		background-color: rgb(193, 255, 194);
+	}
+	tr:nth-child(even) .negative {
+		background-color: #ffcece;
+	}
+	tr:nth-child(even) .positive {
+		background-color: rgb(222, 255, 223);
 	}
 	table {
 		font-family: arial, sans-serif;
