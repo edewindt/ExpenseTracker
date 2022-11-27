@@ -30,6 +30,11 @@
 	import dateFormat, { masks } from 'dateformat';
 	import { onMount } from 'svelte';
 
+	const updateRes = () => {
+		localStorage.clear;
+		localStorage.setItem('expenses', JSON.stringify(expenses));
+	};
+
 	const getResult = (a) => {
 		let total = 0;
 		for (let i = 0; i < a.length; i++) {
@@ -64,12 +69,13 @@
 	<tr><th>Expense</th><th>Value</th><th>Time</th><th>Edit</th></tr>
 	{#each expenses as e (e.id)}
 		{#if e.clicked}<tr
-				><td><input type="text" value={e.name} /></td><td><input type="text" value={e.cost} /></td
+				><td><input type="text" bind:value={e.name} /></td><td
+					><input type="text" bind:value={e.cost} /></td
 				><td>{e.time}</td><td
 					><button
 						on:click={() => {
 							e.clicked = !e.clicked;
-							console.log('Working');
+							updateRes();
 						}}>save</button
 					></td
 				></tr
@@ -80,7 +86,6 @@
 					><button
 						on:click={() => {
 							e.clicked = !e.clicked;
-							console.log('Working');
 						}}>edit</button
 					></td
 				></tr
