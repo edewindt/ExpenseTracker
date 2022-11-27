@@ -31,12 +31,12 @@
 			if (a[i].negative === true) {
 				total = total - a[i].cost;
 			} else {
-				total = total + a[i].cost;
+				total = parseFloat(total) + parseFloat(a[i].cost);
 			}
 		}
 		return total;
 	};
-	$: result = getResult(expenses);
+	$: result = getResult(expenses).toFixed(2);
 	let name;
 	let cost;
 	let negative;
