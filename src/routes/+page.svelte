@@ -61,11 +61,11 @@
 
 <table>
 	<tr><th>Expense</th><th>Value</th><th>Time</th></tr>
-	{#each expenses as { name, cost, negative, time }}
+	{#each expenses as e (e.id)}
 		<tr
-			><td>{name}</td><td class:negative class:positive={!negative}
-				>{#if negative}- ${cost}{:else}+ ${cost}{/if}</td
-			><td>{time}</td></tr
+			><td>{e.name}</td><td class:negative={e.negative} class:positive={!e.negative}
+				>{#if e.negative}- ${e.cost}{:else}+ ${e.cost}{/if}</td
+			><td>{e.time}</td></tr
 		>
 	{/each}
 	<tr><td>Result</td><td>${result}</td><td>Right Now</td></tr>
