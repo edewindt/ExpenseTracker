@@ -37,8 +37,8 @@
 	<tr><th>Expense</th><th>Value</th></tr>
 	{#each expenses as { name, cost, negative, time }}
 		<tr
-			><td>{name}</td><td
-				>{#if negative}-{cost}{:else}+{cost}{/if}</td
+			><td>{name}</td><td class:negative class:positive={!negative}
+				>{#if negative}- {cost}{:else}+ {cost}{/if}</td
 			><td>{time}</td></tr
 		>
 	{/each}
@@ -46,4 +46,10 @@
 </table>
 
 <style>
+	.negative {
+		color: red;
+	}
+	.positive {
+		color: green;
+	}
 </style>
