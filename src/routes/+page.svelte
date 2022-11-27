@@ -37,6 +37,7 @@
 	const del = (id) => {
 		const res = expenses.filter((o) => o.id != id);
 		expenses = res;
+		updateRes();
 	};
 
 	const getResult = (a) => {
